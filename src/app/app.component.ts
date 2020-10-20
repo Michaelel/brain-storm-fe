@@ -9,7 +9,7 @@ import { AuthService } from './auth/auth.service';
   styleUrls: ['./app.component.sass'],
 })
 export class AppComponent {
-  title = 'expert-valuation-ui';
+  title = 'brain-storm-fe';
 
 
   constructor(
