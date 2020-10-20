@@ -1,3 +1,30 @@
-<app-header *ngIf="authService.isLoggedIn$ | async"></app-header>
+<mat-drawer-container class="example-container" autosize>
+  <mat-icon class="burger" (click)="drawer.toggle()" *ngIf="(authService.isLoggedIn$ | async) && !drawer.opened">menu</mat-icon>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <div class="empty-block">
+      <mat-icon class="burger" (click)="drawer.toggle()" *ngIf="drawer.opened">menu</mat-icon>
+    </div>
+    <div class="tabs">
+      <div class="tab" (click)="goToTab('questionnaire-list')">
+        Опросы
+      </div>
+      <div class="tab" *ngIf="userService.isAdmin" (click)="goToTab('questionnaire-edit/1')">
+        Тест на компетентность
+      </div>
+      <div class="tab" *ngIf="userService.isExpert && !userService.isVerified" (click)="goToTab('questionnaire-pass/1')">
+        Тест на компетентность
+      </div>
+      <div class="tab" (click)="goToTab('expert-list')">
+        Эксперты
+      </div>
+    </div>
+  </mat-drawer>
 
-<router-outlet></router-outlet>
+  <div class="example-sidenav-content">
+    <app-header *ngIf="authService.isLoggedIn$ | async"></app-header>
+
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-drawer-container>
+

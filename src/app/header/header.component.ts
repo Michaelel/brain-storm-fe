@@ -25,5 +25,5 @@ export class HeaderComponent implements OnInit {
 
   goToTab(url: string): void {
     this.router.navigate([url]);
-}
+  }
 }
