@@ -8,7 +8,7 @@ import { UserService } from './user.service';
 })
 export class TransportService {
 
-  originRoute = 'https://brainstorm-be.herokuapp.com//api/';
+  originRoute = 'https://brainstorm-be.herokuapp.com/api/';
   headers = {
    'Access-Control-Allow-Origin': '*',
    'Content-Type': 'application/json',
