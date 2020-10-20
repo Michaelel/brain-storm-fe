@@ -1,5 +1,6 @@
 import { ExpertAnswerInterface } from './expert-answer.interface';
 import { UserInterface } from './user.interface';
+import { QuestionInterface } from './question.interface';
 
 export interface ExpertInterface {
     questionnaireId?: number;
@@ -11,4 +12,5 @@ export interface ExpertInterface {
     phone?: string;
     answers: ExpertAnswerInterface[];
     competence?: number;
+    questions?: QuestionInterface[];
 }

@@ -6,10 +6,9 @@
             <input matInput placeholder="Название" formControlName="title">
         </mat-form-field>
 
-        <app-date-picker
-                [dateCtrl]="dateStartCtrl"
-                placeholder="Дата начала"
-        ></app-date-picker>
+        <mat-form-field>
+          <input matInput placeholder="Дата начала (20.10.2020 19:00)" formControlName="dateStart">
+        </mat-form-field>
     </form>
 </div>
 
