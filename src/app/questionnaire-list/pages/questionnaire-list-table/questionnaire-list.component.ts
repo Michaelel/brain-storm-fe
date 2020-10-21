@@ -7,8 +7,9 @@ import { QuestionnaireInterface } from '../../../shared/interfaces/questionnaire
 import { MomentService } from '../../../shared/services/moment.service';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { CreateQuestionnaireComponent } from '../../components/create-questionnaire/create-questionnaire.component';
-import { filter, switchMap, tap } from 'rxjs/operators';
+import { debounceTime, filter, switchMap, tap } from 'rxjs/operators';
 import { UserService } from '../../../shared/services/user.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-questionnaire-list',
@@ -21,6 +22,8 @@ export class QuestionnaireListComponent implements OnInit {
 
   displayedColumns = ['id', 'title', 'dateStart', 'action'];
 
+  titleCtrl: FormControl = new FormControl('');
+
   constructor(
       public dataService: QuestionnaireListService,
       private router: Router,
@@ -31,11 +34,15 @@ export class QuestionnaireListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getQuestionnaireList();
+
+    this.titleCtrl.valueChanges.pipe(
+      debounceTime(500),
+    ).subscribe(() => this.getQuestionnaireList());
   }
 
   getQuestionnaireList = (): void => {
     this.state = ComponentState.Loading;
-    this.dataService.getQuestionnaireList('').subscribe(
+    this.dataService.getQuestionnaireList(this.titleCtrl.value).subscribe(
         res => {
           this.dataService.questionnaireList = res;
           this.state = defineState(res);

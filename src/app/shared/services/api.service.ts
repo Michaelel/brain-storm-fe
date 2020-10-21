@@ -44,7 +44,7 @@ export class ApiService {
     }
 
     getQuestionnaireList(token?: string): Observable<QuestionnaireInterface[]> {
-        return this.transport.get('questionnaire');
+        return this.transport.get('questionnaire', { title: token });
     }
 
     passQuestionnaire(expert: ExpertInterface): Observable<any> {

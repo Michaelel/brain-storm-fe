@@ -1,4 +1,10 @@
-<div class="title">Опросы</div>
+<div class="header">
+  <div class="title">Опросы</div>
+  <mat-form-field>
+    <input matInput placeholder="Фільтр по назві" [formControl]="titleCtrl">
+  </mat-form-field>
+</div>
+
 <mat-card>
     <component-state [state]="state" [getData]="getQuestionnaireList">
         <mat-table [dataSource]="dataService.questionnaireList" class="mat-elevation-z8">
