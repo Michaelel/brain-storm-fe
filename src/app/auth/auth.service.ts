@@ -9,6 +9,9 @@ import { Router } from '@angular/router';
 import * as jwtDecode from 'jwt-decode';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { MatDialogRef } from '@angular/material/dialog';
+import { SignupComponent } from './pages/signup/signup.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @Injectable({
   providedIn: 'root',
@@ -57,20 +60,26 @@ export class AuthService {
     return this.targetPath;
   }
 
-  login(payload: LoginRequestInterface): void {
+  login(payload: LoginRequestInterface, dialogRef: MatDialogRef<LoginComponent>): void {
     this.isAuthInProgress = true;
     this.api.login(payload).subscribe(
-        res => this.makeAfterLoginActions(res),
+        res => {
+          dialogRef.close();
+          this.makeAfterLoginActions(res);
+        },
         e => alert(e || e.message),
     );
   }
 
-  signup(payload: SignupRequestInterface): void {
+  signup(payload: SignupRequestInterface, dialogRef: MatDialogRef<SignupComponent>): void {
     this.isAuthInProgress = true;
     this.api.signup(payload).pipe(
       switchMap(() => this.api.login({ email: payload.email, password: payload.password })),
     ).subscribe(
-        res => this.makeAfterLoginActions(res),
+        res => {
+          dialogRef.close();
+          this.makeAfterLoginActions(res);
+        },
         e => alert(e || e.message),
     );
   }

@@ -3,6 +3,7 @@ import { AuthService } from '../../auth.service';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { DEFAULT_PHONE_NUMBER_PATTERN } from '../../../../environments/constants';
 import { RolesEnum } from '../../../shared/enums/roles.enum';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-signup',
@@ -37,6 +38,7 @@ export class SignupComponent implements OnInit {
   constructor(
       public authService: AuthService,
       private fb: FormBuilder,
+      public dialogRef: MatDialogRef<SignupComponent>,
   ) { }
 
   ngOnInit(): void {

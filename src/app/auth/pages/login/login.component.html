@@ -1,10 +1,12 @@
+<div mat-dialog-title>Авторизація</div>
+
 <form [formGroup]="loginForm">
     <mat-form-field>
         <input matInput
                formControlName="email"
                ngDefaultControl
                type="email"
-               placeholder="Введите email">
+               placeholder="Email">
     </mat-form-field>
 
     <mat-form-field>
@@ -13,19 +15,17 @@
                ngDefaultControl
                type="password"
                autocomplete="off"
-               placeholder="Введите пароль">
+               placeholder="Пароль">
     </mat-form-field>
-
-    <a (click)="goToSignup()"
-       class="login-form__forget">Перейти к регистрации</a>
-
 </form>
 
-<button mat-raised-button
-        class="text-uppercase"
-        ngClass="login-form__submit"
-        type="submit"
-        color="primary"
-        [disabled]="authService.isAuthInProgress || loginForm.invalid"
-        (click)="authService.login(loginForm.value)">Войти
-</button>
+<div mat-dialog-actions>
+  <button mat-dialog-close mat-button>Закрити</button>
+  <button mat-raised-button
+          ngClass="login-form__submit"
+          type="submit"
+          color="primary"
+          [disabled]="authService.isAuthInProgress || loginForm.invalid"
+          (click)="authService.login(loginForm.value, dialogRef)">Увійти
+  </button>
+</div>

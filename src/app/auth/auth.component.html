@@ -1,9 +1,25 @@
-<mat-card class="login-form">
-    <div class="login-form__logo"></div>
-    <h1 class="login-form__title">{{ authService.isLoginMode ? 'Авторизация' : 'Регистрация' }}</h1>
-    <mat-card-content>
-        <app-login *ngIf="authService.isLoginMode"></app-login>
-        <app-signup *ngIf="!authService.isLoginMode"></app-signup>
-    </mat-card-content>
-</mat-card>
+<!--<mat-card class="login-form">-->
+<!--    <div class="login-form__logo"></div>-->
+<!--    <h1 class="login-form__title">{{ authService.isLoginMode ? 'Авторизация' : 'Регистрация' }}</h1>-->
+<!--    <mat-card-content>-->
+<!--        <app-login *ngIf="authService.isLoginMode"></app-login>-->
+<!--        <app-signup *ngIf="!authService.isLoginMode"></app-signup>-->
+<!--    </mat-card-content>-->
+<!--</mat-card>-->
+
+<div class="content">
+  <div class="header">
+    <button mat-raised-button class="mat-primary uppercase" (click)="openLoginDialog()">Увійти</button>
+    <button mat-stroked-button class="mat-primary uppercase" (click)="openSignUpDialog()">Зареєструватись</button>
+  </div>
+
+  <div class="main">
+    <div class="title">Brain Storm</div>
+    <div class="logo">
+      <img src="assets/img/logo.png" alt="logo">
+    </div>
+  </div>
+  <div class="footer"></div>
+</div>
+
 

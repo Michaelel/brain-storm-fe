@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../auth.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(
       public authService: AuthService,
       private fb: FormBuilder,
+      public dialogRef: MatDialogRef<LoginComponent>,
   ) { }
 
   ngOnInit(): void {

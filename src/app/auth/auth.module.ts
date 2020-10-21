@@ -17,5 +17,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     ReactiveFormsModule,
   ],
+  entryComponents: [ LoginComponent, SignupComponent ],
 })
 export class AuthModule { }

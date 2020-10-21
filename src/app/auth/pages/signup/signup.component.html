@@ -1,31 +1,33 @@
+<div mat-dialog-title>Реєстрація</div>
+
 <form [formGroup]="signupForm">
     <mat-form-field>
         <input matInput
                formControlName="email"
                ngDefaultControl
                type="email"
-               placeholder="Введите email">
+               placeholder="Email">
     </mat-form-field>
 
     <mat-form-field>
         <input matInput
                formControlName="firstName"
                ngDefaultControl
-               placeholder="Введите имя">
+               placeholder="І'мя">
     </mat-form-field>
 
     <mat-form-field>
         <input matInput
                formControlName="lastName"
                ngDefaultControl
-               placeholder="Введите фамилию">
+               placeholder="Прізвище">
     </mat-form-field>
 
     <mat-form-field>
         <input matInput
                formControlName="phone"
                ngDefaultControl
-               placeholder="Введите номер телефона">
+               placeholder="Номер телефону">
     </mat-form-field>
 
     <mat-form-field>
@@ -34,7 +36,7 @@
                ngDefaultControl
                type="password"
                autocomplete="off"
-               placeholder="Введите пароль">
+               placeholder="Пароль">
     </mat-form-field>
 
     <mat-form-field>
@@ -43,24 +45,25 @@
                ngDefaultControl
                type="password"
                autocomplete="off"
-               placeholder="Повторите пароль">
+               placeholder="Повторіть пароль">
     </mat-form-field>
 
     <mat-radio-group formControlName="role">
         <mat-radio-button [value]="rolesEnum.Expert">Експерт</mat-radio-button>
-        <mat-radio-button [value]="rolesEnum.User">Пользователь</mat-radio-button>
+        <mat-radio-button [value]="rolesEnum.User">Користувач</mat-radio-button>
     </mat-radio-group>
-
-    <a (click)="goToLogin()"
-       class="login-form__forget">Войти в существующий аккаунт</a>
 
 </form>
 
-<button mat-raised-button
-        class="text-uppercase"
-        ngClass="login-form__submit"
-        type="submit"
-        color="primary"
-        [disabled]="authService.isAuthInProgress || signupForm.invalid"
-        (click)="authService.signup(signupForm.value)">Войти
-</button>
+<div mat-dialog-actions>
+  <button mat-dialog-close mat-button>Закрити</button>
+  <button mat-raised-button
+          class="text-uppercase"
+          ngClass="login-form__submit"
+          type="submit"
+          color="primary"
+          [disabled]="authService.isAuthInProgress || signupForm.invalid"
+          (click)="authService.signup(signupForm.value, dialogRef)">Зареєструватись
+  </button>
+</div>
+
