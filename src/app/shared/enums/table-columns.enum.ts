@@ -1,6 +1,6 @@
 export enum TableColumnsEnum {
     id = 'Id',
-    pointsLimit = 'Доступно баллов',
-    content = 'Вопрос',
+    pointsLimit = 'Доступно балів',
+    content = 'Питання',
     action = '',
 }

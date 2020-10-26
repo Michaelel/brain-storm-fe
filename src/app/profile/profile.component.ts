@@ -55,7 +55,7 @@ export class ProfileComponent implements OnInit {
 
   editProfileInfo(): void {
     this.state = ComponentState.Loading;
-    this.dataService.editProfileInfo({ ...this.profileForm.value, id: this.dataService.profileId }).subscribe(
+    this.dataService.editProfileInfo({ ...this.profileForm.value, role: this.dataService.profileInfo.role, id: this.dataService.profileId }).subscribe(
         res => {
           this.state = ComponentState.Success;
           this.dataService.profileInfo = res;

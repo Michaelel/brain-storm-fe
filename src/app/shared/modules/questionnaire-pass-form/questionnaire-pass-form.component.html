@@ -7,8 +7,23 @@
                     aria-labelledby="radio-group-label"
                     class="radio-group"
                     [(ngModel)]="expertAnswers.questions ? expertAnswers.questions[i].answers[0].id : expertAnswers.answers[i].answerId">
-                <mat-radio-button class="radio-button" *ngFor="let answer of question.answers" [value]="answer.id">
-                    {{ answer.content }}
+                <mat-radio-button class="radio-button" [checked]="answer.checked" *ngFor="let answer of question.answers" [value]="answer.id">
+                    <button mat-button
+                            class="mat-primary"
+                            [class.mat-stroked-button]="expertAnswers.answers[i].answerId !== answer.id"
+                            [class.mat-raised-button]="expertAnswers.answers[i].answerId === answer.id"
+                            *ngIf="!expertAnswers.questions"
+                            (click)="expertAnswers.answers[i].answerId = answer.id">
+                      {{ answer.content }}
+                    </button>
+                    <button mat-button
+                            class="mat-primary"
+                            [class.mat-stroked-button]="expertAnswers.questions[i].answers[0].id !== answer.id"
+                            [class.mat-raised-button]="expertAnswers.questions[i].answers[0].id === answer.id"
+                            *ngIf="expertAnswers.questions"
+                            (click)="expertAnswers.questions[i].answers[0].id = answer.id">
+                      {{ answer.content }}
+                    </button>
                 </mat-radio-button>
             </mat-radio-group>
         </div>

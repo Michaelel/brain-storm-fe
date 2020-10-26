@@ -1,5 +1,5 @@
 <div class="header">
-  <div class="title">Опросы</div>
+  <div class="title">Опитування</div>
   <mat-form-field>
     <input matInput placeholder="Фільтр по назві" [formControl]="titleCtrl">
   </mat-form-field>
@@ -41,4 +41,4 @@
     </component-state>
 </mat-card>
 
-<button class="add-item-button" mat-fab *ngIf="userService.isAdmin" (click)="goToCreateQuestionnaire()"><mat-icon>add</mat-icon></button>
+<button class="add-item-button" matTooltip="Додати питування" mat-fab *ngIf="userService.isAdmin" (click)="goToCreateQuestionnaire()"><mat-icon>add</mat-icon></button>

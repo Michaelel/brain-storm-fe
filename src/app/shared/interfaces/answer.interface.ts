@@ -3,4 +3,5 @@ export interface AnswerInterface {
     temporaryId?: number;
     content: string;
     points: number;
+    checked?: boolean;
 }
