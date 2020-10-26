@@ -1,4 +1,4 @@
-<div class="title">Профиль</div>
+<div class="title">Профіль</div>
 <mat-card>
     <component-state [state]="state" [getData]="getProfileInfo">
         <div class="d-flex">
@@ -9,28 +9,28 @@
                                formControlName="email"
                                ngDefaultControl
                                type="email"
-                               placeholder="Введите email">
+                               placeholder="Email">
                     </mat-form-field>
 
                     <mat-form-field>
                         <input matInput
                                formControlName="firstName"
                                ngDefaultControl
-                               placeholder="Введите имя">
+                               placeholder="Ім'я">
                     </mat-form-field>
 
                     <mat-form-field>
                         <input matInput
                                formControlName="lastName"
                                ngDefaultControl
-                               placeholder="Введите фамилию">
+                               placeholder="Прізвище">
                     </mat-form-field>
 
                     <mat-form-field>
                         <input matInput
                                formControlName="phone"
                                ngDefaultControl
-                               placeholder="Введите номер телефона">
+                               placeholder="Номер телефону">
                     </mat-form-field>
                 </form>
             </div>
@@ -43,14 +43,14 @@
                     [disabled]="profileForm.pristine || profileForm.invalid"
                     (click)="editProfileInfo()"
             >
-                Сохранить
+                Зберегти
             </button>
             <button mat-button
                     class="uppercase cancel-btn"
                     [disabled]="profileForm.pristine"
                     (click)="cancel()"
             >
-                Отмена
+                Відмінити
             </button>
         </div>
     </component-state>

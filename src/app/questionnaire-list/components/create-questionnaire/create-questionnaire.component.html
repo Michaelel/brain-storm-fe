@@ -1,18 +1,18 @@
-<div mat-dialog-title>Создание опроса</div>
+<div mat-dialog-title>Створення опитування</div>
 
 <div>
     <form [formGroup]="questionnaireForm">
         <mat-form-field>
-            <input matInput placeholder="Название" formControlName="title">
+            <input matInput placeholder="Назва" formControlName="title">
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput placeholder="Дата начала (20.10.2020 19:00)" formControlName="dateStart">
+          <input matInput placeholder="Дата початку (20.10.2020 19:00)" formControlName="dateStart">
         </mat-form-field>
     </form>
 </div>
 
 <div class="actions">
-    <button mat-button mat-dialog-close class="uppercase cancel-btn">Отмена</button>
-    <button mat-button [disabled]="questionnaireForm.invalid" (click)="create()" class="mat-primary uppercase">Создать</button>
+    <button mat-button mat-dialog-close class="uppercase cancel-btn">Відміна</button>
+    <button mat-button [disabled]="questionnaireForm.invalid" (click)="create()" class="mat-primary uppercase">Створити</button>
 </div>

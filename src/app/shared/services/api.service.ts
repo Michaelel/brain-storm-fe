@@ -8,6 +8,7 @@ import { UserInterface } from '../interfaces/user.interface';
 import { QuestionnaireInterface } from '../interfaces/questionnaire.interface';
 import { ExpertInterface } from '../interfaces/expert.interface';
 import { QuestionnaireResultInterface } from '../interfaces/questionnaire-result.interface';
+import { RolesEnum } from '../enums/roles.enum';
 
 @Injectable({
                 providedIn: 'root',
@@ -55,8 +56,8 @@ export class ApiService {
         return this.transport.post('questionnaire', payload);
     }
 
-    getExpertList(): Observable<UserInterface[]> {
-        return this.transport.get('users', { role: 'EXPERT' });
+    getUserList(email?: string): Observable<UserInterface[]> {
+        return this.transport.get('users', {email});
     }
 
     getQuestionnaireResult(id: number): Observable<ExpertInterface[]> {

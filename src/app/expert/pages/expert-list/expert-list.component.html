@@ -1,6 +1,13 @@
-<div class="title">Эксперты</div>
+<div class="header">
+  <div class="title">Користувачі</div>
+  <div class="filter">
+    <mat-form-field>
+      <input matInput [formControl]="emailCtrl" placeholder="Фільтр по email">
+    </mat-form-field>
+  </div>
+</div>
 <mat-card>
-    <component-state [state]="state" [getData]="getExpertList">
+    <component-state [state]="state" [getData]="getUserList">
         <mat-table [dataSource]="dataService.expertList" class="mat-elevation-z8">
             <!-- Position Column -->
             <ng-container matColumnDef="id">
@@ -10,7 +17,7 @@
 
             <!-- Name Column -->
             <ng-container matColumnDef="name">
-                <mat-header-cell *matHeaderCellDef> Имя </mat-header-cell>
+                <mat-header-cell *matHeaderCellDef> И'мя </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.firstName}} {{ element.lastName }} </mat-cell>
             </ng-container>
 
@@ -30,12 +37,21 @@
             <ng-container matColumnDef="action">
                 <mat-header-cell *matHeaderCellDef></mat-header-cell>
                 <mat-cell *matCellDef="let element">
-                    <mat-icon *ngIf="userService.isAdmin && !element.verified" (click)="$event.stopPropagation(); verifyUser(element.id)">verified_user</mat-icon>
+                    <mat-icon matTooltip="Верифікувати експерта"
+                              *ngIf="userService.isAdmin && element.role === 'EXPERT' && !element.verified"
+                              (click)="$event.stopPropagation(); verifyUser(element.id)">
+                      verified_user
+                    </mat-icon>
+                    <mat-icon matTooltip="Зробити адміністратором"
+                              *ngIf="userService.isAdmin && element.role !== 'ADMIN'"
+                              (click)="$event.stopPropagation(); makeAdmin(element)">
+                      lock_open
+                    </mat-icon>
                 </mat-cell>
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row (click)="goExpert(row.id)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            <mat-row (click)="goToUser(row.id)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
     </component-state>
 </mat-card>

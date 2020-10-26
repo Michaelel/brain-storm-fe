@@ -1,4 +1,4 @@
-<div class="title">Анкета на компетентность</div>
+<div class="title">Опитування</div>
 <mat-card>
     <component-state [state]="state" [getData]="getQuestionnaire">
         <ng-container *ngIf="expert">
@@ -9,7 +9,7 @@
                 [disabled]="isPassButtonDisable"
                 (click)="passQuestionnaire()"
         >
-            Сохранить
+            Зберегти
         </button>
     </component-state>
 </mat-card>

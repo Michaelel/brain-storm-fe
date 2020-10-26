@@ -10,7 +10,7 @@ const routes: Routes = [
     component: ExpertListComponent,
   },
   {
-    path: 'expert/:profileId',
+    path: 'user/:profileId',
     // loadChildren: () => import('./../profile/profile.module').then(m => m.ProfileModule),
     component: ProfileComponent,
   },

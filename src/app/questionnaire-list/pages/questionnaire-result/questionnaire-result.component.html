@@ -1,11 +1,11 @@
-<div class="title">Опрос</div>
+<div class="title">Опитування</div>
 <mat-card>
     <component-state [state]="state" [getData]="getQuestionnaireResult">
         <div class="questionnaire-header">
             <div class="card-title">{{ dataService.activeQuestionnaire?.title }}</div>
             <div class="date-start">
                 <div class="key">
-                    Дата начала:
+                    Дата початку:
                 </div>
                 <div class="value">
                     {{ dataService.activeQuestionnaire?.dateStart }}
@@ -15,7 +15,7 @@
         </div>
         <div class="experts">
             <div class="experts-title">
-                Результаты экспертов
+              Результати експертів
             </div>
             <component-state [state]="expertsState">
                 <mat-table [dataSource]="questionnaireResult" class="mat-elevation-z8">
@@ -27,7 +27,7 @@
 
                     <!-- Name Column -->
                     <ng-container matColumnDef="name">
-                        <mat-header-cell *matHeaderCellDef> Имя </mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef> Ім'я </mat-header-cell>
                         <mat-cell *matCellDef="let element"> {{element.firstName}} {{ element.lastName }} </mat-cell>
                     </ng-container>
 

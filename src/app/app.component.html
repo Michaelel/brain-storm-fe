@@ -6,16 +6,16 @@
     </div>
     <div class="tabs">
       <div class="tab" (click)="goToTab('questionnaire-list')">
-        Опросы
+        Опитування
       </div>
       <div class="tab" *ngIf="userService.isAdmin" (click)="goToTab('questionnaire-edit/1')">
-        Тест на компетентность
+        Тест на компетентність
       </div>
       <div class="tab" *ngIf="userService.isExpert && !userService.isVerified" (click)="goToTab('questionnaire-pass/1')">
-        Тест на компетентность
+        Тест на компетентність
       </div>
-      <div class="tab" (click)="goToTab('expert-list')">
-        Эксперты
+      <div class="tab" (click)="goToTab('user-list')">
+        Користувачі
       </div>
     </div>
   </mat-drawer>

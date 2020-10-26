@@ -37,7 +37,7 @@ const routes: Routes = [
       canActivate: [AuthGuard],
   },
   {
-    path: 'expert-list',
+    path: 'user-list',
     loadChildren: () => import('./expert/expert.module').then(m => m.ExpertModule),
     canActivate: [AuthGuard],
   },

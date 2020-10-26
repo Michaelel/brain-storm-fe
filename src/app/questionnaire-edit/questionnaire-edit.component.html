@@ -1,14 +1,14 @@
-<div class="title">Редактирование анкеты для экспертов</div>
+<div class="title">Редагування анкети</div>
 <mat-card>
     <component-state [state]="state" [getData]="getQuestionnaire">
         <form [formGroup]="questionnaireForm" class="w-100">
             <div class="d-flex w-100">
                 <div class="flex-1 fd-column">
                     <mat-form-field>
-                        <input matInput placeholder="Название" formControlName="title">
+                        <input matInput placeholder="Назва" formControlName="title">
                     </mat-form-field>
                     <mat-form-field>
-                      <input matInput placeholder="Дата начала (20.10.2020 19:00)" formControlName="dateStart">
+                      <input matInput placeholder="Дата початку (20.10.2020 19:00)" formControlName="dateStart">
                     </mat-form-field>
                 </div>
                 <div class="flex-1 empty-flex"></div>
@@ -35,12 +35,12 @@
                             <div class="edit-question">
                                 <div class="edit-content">
                                     <mat-form-field>
-                                        <input matInput placeholder="Вопрос" (change)="markAsDirty()" [(ngModel)]="element.content">
+                                        <input matInput placeholder="Питання" (change)="markAsDirty()" [(ngModel)]="element.content">
                                     </mat-form-field>
                                 </div>
                                 <div class="edit-question-count">
                                     <mat-form-field>
-                                        <input matInput placeholder="Максимальное количество баллов" type="number" min="0" (change)="handleAnswersPoints(element)" [(ngModel)]="element.pointsLimit">
+                                        <input matInput placeholder="Максимальна кількість балів" type="number" min="0" (change)="handleAnswersPoints(element)" [(ngModel)]="element.pointsLimit">
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -51,12 +51,12 @@
                                 <div class="edit-answer">
                                     <div class="edit-content">
                                         <mat-form-field>
-                                            <input matInput placeholder="Ответ" (change)="markAsDirty()" [(ngModel)]="answer.content">
+                                            <input matInput placeholder="Відповідь" (change)="markAsDirty()" [(ngModel)]="answer.content">
                                         </mat-form-field>
                                     </div>
                                     <div class="edit-answer-count">
                                         <mat-form-field>
-                                            <input matInput placeholder="Баллы"
+                                            <input matInput placeholder="Бал"
                                                    type="number"
                                                    min="0"
                                                    [attr.max]="element.pointsLimit"
@@ -69,7 +69,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button mat-button class="add-answer-btn mat-accent" (click)="addNewAnswer(element)">Добавить ответ</button>
+                            <button mat-button class="add-answer-btn mat-accent" (click)="addNewAnswer(element)">Дадати відповідь</button>
                         </div>
                     </div>
                 </td>
@@ -84,11 +84,11 @@
             <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
         </table>
 
-        <button mat-button class="mat-accent add-question-btn" (click)="addNewQuestion()">Добавить новый вопрос</button>
+        <button mat-button class="mat-accent add-question-btn" (click)="addNewQuestion()">Додати питання</button>
 
         <div class="actions">
-            <button mat-raised-button class="mat-primary" [disabled]="(!hasChanges && questionnaireForm.pristine) || questionnaireForm.invalid" (click)="save()">Сохранить</button>
-            <button mat-button class="cancel-btn" [disabled]="!hasChanges && questionnaireForm.pristine" (click)="cancel()">Отменить</button>
+            <button mat-raised-button class="mat-primary" [disabled]="(!hasChanges && questionnaireForm.pristine) || questionnaireForm.invalid" (click)="save()">Зберегти</button>
+            <button mat-button class="cancel-btn" [disabled]="!hasChanges && questionnaireForm.pristine" (click)="cancel()">Відмінити</button>
         </div>
     </component-state>
 </mat-card>

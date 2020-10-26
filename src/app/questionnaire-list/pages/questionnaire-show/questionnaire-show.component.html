@@ -1,11 +1,11 @@
-<div class="title">Опрос</div>
+<div class="title">Опитування</div>
 <mat-card>
     <component-state [state]="state" [getData]="getQuestionnaire">
         <div class="questionnaire-header">
             <div class="card-title">{{ questionnaire?.title }}</div>
             <div class="date-start">
                 <div class="key">
-                    Дата начала:
+                    Дата початку:
                 </div>
                 <div class="value">
                     {{ questionnaire?.dateStart }}
@@ -14,7 +14,7 @@
             <div class="id">{{ questionnaire?.id }}</div>
         </div>
         <div class="questions" *ngIf="expert && questionnaire.questions">
-            <div class="questions-title">Вопросы</div>
+            <div class="questions-title">Питання</div>
             <app-questionnaire-pass-form [questions]="questionnaire.questions" [expertAnswers]="expert" [editable]="false"></app-questionnaire-pass-form>
         </div>
     </component-state>

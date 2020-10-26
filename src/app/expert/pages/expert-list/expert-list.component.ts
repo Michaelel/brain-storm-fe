@@ -5,12 +5,13 @@ import { ExpertService } from '../../expert.service';
 import { defineState } from '../../../../environments/pure-functions';
 import { UserService } from '../../../shared/services/user.service';
 import { MatDialog } from '@angular/material/dialog';
-import { QuestionnairePassComponent } from '../../../questionnaire-pass/questionnaire-pass.component';
 import { ApiService } from '../../../shared/services/api.service';
-import { filter, switchMap } from 'rxjs/operators';
-import { pipe } from 'rxjs';
+import { debounceTime, filter, switchMap } from 'rxjs/operators';
 import { QuestionnaireDialogComponent } from '../../../questionnaire-list/components/questionnaire-dialog/questionnaire-dialog.component';
 import { ExpertInterface } from '../../../shared/interfaces/expert.interface';
+import { FormControl } from '@angular/forms';
+import { UserInterface } from '../../../shared/interfaces/user.interface';
+import { RolesEnum } from '../../../shared/enums/roles.enum';
 
 @Component({
   selector: 'app-expert-list',
@@ -23,6 +24,8 @@ export class ExpertListComponent implements OnInit {
 
   displayedColumns = ['id', 'name', 'email', 'phone', 'action'];
 
+  emailCtrl = new FormControl('');
+
   constructor(
       public dataService: ExpertService,
       public userService: UserService,
@@ -32,12 +35,15 @@ export class ExpertListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getExpertList();
+    this.getUserList();
+    this.emailCtrl.valueChanges.pipe(
+      debounceTime(500),
+    ).subscribe(() => this.getUserList());
   }
 
-  getExpertList = (): void => {
+  getUserList = (): void => {
     this.state = ComponentState.Loading;
-    this.dataService.getExpertList().subscribe(
+    this.dataService.getUserList(this.emailCtrl.value).subscribe(
         res => {
           this.state = defineState(res);
           this.dataService.expertList = res;
@@ -66,8 +72,15 @@ export class ExpertListComponent implements OnInit {
     ).subscribe();
   }
 
-  goExpert(expertId: number): void {
-    this.router.navigate([`expert-list/expert/${expertId}`]);
+  makeAdmin(user: UserInterface): void {
+    this.api.editProfileInfo({ ...user, role: RolesEnum.Admin }).subscribe(
+      () => this.getUserList(),
+      e => alert(e.error.message || e.error),
+    );
+  }
+
+  goToUser(userId: number): void {
+    this.router.navigate([`user-list/user/${userId}`]);
   }
 
 }

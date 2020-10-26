@@ -22,7 +22,7 @@
             </div>
 
             <ng-container *ngIf="emptyBlock.childNodes.length == 0">
-                <span>Данные для отображения отсутствуют</span>
+                <span>Дані відсутні</span>
             </ng-container>
         </div>
     </ng-container>
@@ -31,14 +31,13 @@
     <ng-container *ngSwitchCase="componentStateEnum.Error">
         <div class="error-container" [ngStyle]="styles">
             <mat-icon class="error-icon text-color-secondary">mood_bad</mat-icon>
-            <div>Уппс.. Возникла
-                ошибка при загрузке данных
+            <div>Помилка при завантаженні даних
             </div>
             <button (click)="getData()"
                     *ngIf="getData"
                     color="accent"
                     class="load-data-btn"
-                    mat-button>Попытаться еще раз
+                    mat-button>Спробувати ще раз
             </button>
         </div>
     </ng-container>

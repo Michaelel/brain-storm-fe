@@ -6,7 +6,7 @@
         </div>
     </div>
    <div class="right-header" (click)="redirectToProfile()">
-       <mat-icon class="mr-20">person</mat-icon>
-       <mat-icon *ngIf="authService.isLoggedIn$ | async" (click)="authService.logOut()">exit_to_app</mat-icon>
+       <mat-icon matTooltip="Профіль" class="mr-20">person</mat-icon>
+       <mat-icon matTooltip="Вийти" *ngIf="authService.isLoggedIn$ | async" (click)="authService.logOut()">exit_to_app</mat-icon>
    </div>
 </div>
